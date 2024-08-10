@@ -31,6 +31,11 @@ app.use(bodyParser.json());
 
 // Routes
 // Get all employees
+app.get('/', (req, res) => {
+  Employee.find()
+    .then(employees => res.json(employees))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 app.get('/api/employees', (req, res) => {
   Employee.find()
     .then(employees => res.json(employees))
